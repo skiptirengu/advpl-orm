@@ -51,47 +51,47 @@ Class BaseModel
 	
 ENDCLASS
 
-/*/
+/*
 	METHOD:		New
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	CONSTRUCTOR
 	Sintaxe:	BaseModel():New() -> Self
-/*/
+*/
 METHOD New() Class BaseModel
 Return(Self)
 
-/*/
+/*
 	METHOD:		getAlias
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna o alias associado a este model. Este método deve ser sobrescrito por 
 				subclasses
 	Sintaxe:	BaseModel():getAlias() -> cAlias
-/*/
+*/
 METHOD getAlias() Class BaseModel
 Return("")
 
-/*/
+/*
 	METHOD:		getProperties
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna as propriedades da classe
 	Sintaxe:	BaseModel():getProperties() -> SHASH
-/*/
+*/
 METHOD getProperties() Class BaseModel
 
 	self:populateProperties()
 
 Return(Self:properties)
 
-/*/
+/*
 	METHOD:		getDao
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna uma instancia da Data Layer associada a classe
 	Sintaxe:	BaseModel():getDao() -> Self:daoObject
-/*/
+*/
 METHOD getDao() Class BaseModel
 
 	self:populateProperties()
@@ -108,13 +108,13 @@ METHOD getDao() Class BaseModel
 
 Return
 
-/*/
+/*
 	METHOD:		getMemoFields
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna os campos MEMO da classe
 	Sintaxe:	BaseModel():getMemoFields() -> Array
-/*/
+*/
 METHOD getMemoFields() Class BaseModel
 
 	if (!empty(self:memoFields))
@@ -136,26 +136,26 @@ METHOD getMemoFields() Class BaseModel
 
 Return(self:memoFields)
  
-/*/
+/*
 	METHOD:		isLoaded
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Indica se as propriedades da classe ja foram populadas
 	Sintaxe:	BaseModel():isLoaded() -> Self:isLoaded
-/*/
+*/
 METHOD isLoaded() Class BaseModel
 
 	return self:isLoaded == .t.
 
 Return
 
-/*/
+/*
 	METHOD:		getColumn
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna o objeto column associado a propriedade
 	Sintaxe:	BaseModel():getColumn(cVar) -> Column
-/*/
+*/
 METHOD getColumn(cVar) Class BaseModel
 	
 	self:populateProperties()
@@ -164,26 +164,26 @@ METHOD getColumn(cVar) Class BaseModel
 	
 Return
 
-/*/
+/*
 	METHOD:		getFields
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna um array com as propriedades declaradas
 	Sintaxe:	BaseModel():getFields() -> Array
-/*/
+*/
 METHOD getFields() Class BaseModel
 
 	self:populateProperties()
 
 Return(Self:properties:getKeys())
 
-/*/
+/*
 	METHOD:		get
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna o valor de uma propriedade da classe
 	Sintaxe:	BaseModel():get(cVar) -> xVal
-/*/
+*/
 METHOD get(cVar) Class BaseModel
 
 	self:populateProperties()
@@ -192,13 +192,13 @@ METHOD get(cVar) Class BaseModel
 
 Return
 
-/*/
+/*
 	METHOD:		set
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Atribui o valor a uma propriedade da classe
 	Sintaxe:	BaseModel():set(cVar, xVal) -> nil
-/*/
+*/
 METHOD set(cVar, xVal) Class BaseModel
 
 	self:populateProperties()
@@ -207,13 +207,13 @@ METHOD set(cVar, xVal) Class BaseModel
 
 Return
 
-/*/
+/*
 	METHOD:		salvar
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Salva este model. Retorna o Recno do registro ou zero caso ocorra um erro
 	Sintaxe:	BaseModel():salvar() -> nRecno
-/*/
+*/
 METHOD salvar() Class BaseModel
 
 	xRet := self:getDao():salvar(self)
@@ -221,91 +221,91 @@ METHOD salvar() Class BaseModel
 
 Return(xRet)
 
-/*/
+/*
 	METHOD:		save
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Salva este model. Retorna o Recno do registro ou zero caso ocorra um erro
 	Sintaxe:	BaseModel():save() -> nRecno
-/*/
+*/
 METHOD save() Class BaseModel
 
 	return self:salvar()
 
 Return
 
-/*/
+/*
 	METHOD:		query
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Faz uma nova busca com os parametros
 	Sintaxe:	BaseModel():query(aParams, cType = "ONE|MANY") -> xRet
-/*/
+*/
 METHOD query(aParams, cType) Class BaseModel
 
 	xRet := self:getDao():query(aParams, cType)
 
 Return(xRet)
 
-/*/
+/*
 	METHOD:		findOne
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Busca um model pelo Recno
 	Sintaxe:	BaseModel():findOne() -> Self
-/*/
+*/
 METHOD findOne(xRecno) Class BaseModel
 
 	xRet := self:getDao():getByRecno(xRecno)
 
 Return(xRet)
 
-/*/
+/*
 	METHOD:		excluir
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Exclui o model do banco de dados
 	Sintaxe:	BaseModel():excluir() -> Boolean
-/*/
+*/
 METHOD excluir() Class BaseModel
 
 	lRet := self:getDao():excluir(self:get('R_E_C_N_O_'))
 
 Return(lRet)
 
-/*/
+/*
 	METHOD:		hasOne
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Estabelece uma relacao 1 - 1 entre duas classes
 	Sintaxe:	BaseModel():hasOne(_cAlias, aRelation) -> Object
-/*/
+*/
 Method hasOne(_cAlias, aRelation) Class BaseModel
 
 	return self:hasRelation(_cAlias, aRelation, "ONE")
 
 Return
 
-/*/
+/*
 	METHOD:		hasMany
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Estabelece uma relacao 1 - n entre duas classes
 	Sintaxe:	BaseModel():hasMany(_cAlias, aRelation) -> Array
-/*/
+*/
 Method hasMany(_cAlias, aRelation) Class BaseModel
 
 	return self:hasRelation(_cAlias, aRelation, "MANY")
 
 Return
 
-/*/
+/*
 	METHOD:		hasMany
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Estabelece uma relacao entre duas classes
 	Sintaxe:	BaseModel():hasMany(_cAlias, aRelation, cType) -> xRet
-/*/
+*/
 METHOD hasRelation(_cAlias, aRelation, cType) Class BaseModel
 
 	local aQuery := {}
@@ -352,13 +352,13 @@ METHOD hasRelation(_cAlias, aRelation, cType) Class BaseModel
 
 Return(xRet)
 
-/*/
+/*
 	METHOD:		populateProperties
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Carrega as propriedades da classe baseando-se no dicionario de dados (SX3)
 	Sintaxe:	BaseModel():populateProperties() -> nil
-/*/
+*/
 METHOD populateProperties() Class BaseModel
 
 	if (self:isLoaded())
