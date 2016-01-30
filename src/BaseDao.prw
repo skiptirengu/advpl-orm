@@ -25,7 +25,7 @@ CLASS BaseDao
 	METHOD New() CONSTRUCTOR
 	
 	METHOD query(aParams)
-	METHOD excluir()
+	METHOD delete()
 	METHOD salvar()
 	METHOD getByRecno()
 	METHOD getAlias()
@@ -144,13 +144,13 @@ METHOD salvar(oObjeto) CLASS BaseDao
 Return(0)
 
 /*
-	METHOD:		excluir
+	METHOD:		delete
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Exclui um registro da tabela
-	Sintaxe:	Model():excluir(xRecno) -> Boolean
+	Sintaxe:	Model():delete(xRecno) -> Boolean
 */
-METHOD excluir(xRecno) CLASS BaseDao
+METHOD delete(xRecno) CLASS BaseDao
 
 	local _cQuery	:= ""
 	local _cAlias	:= self:getAlias()

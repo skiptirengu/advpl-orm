@@ -45,6 +45,7 @@ Class BaseModel
 	METHOD save()
 	METHOD findOne(xRecno)
 	METHOD excluir()
+	METHOD delete()
 	METHOD hasOne(_cAlias, aRelation)
 	METHOD hasMany(_cAlias, aRelation)
 	METHOD hasRelation(_cAlias, aRelation, cType)
@@ -261,15 +262,15 @@ METHOD findOne(xRecno) Class BaseModel
 Return(xRet)
 
 /*
-	METHOD:		excluir
+	METHOD:		delete
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Exclui o model do banco de dados
-	Sintaxe:	BaseModel():excluir() -> Boolean
+	Sintaxe:	BaseModel():delete() -> Boolean
 */
-METHOD excluir() Class BaseModel
+METHOD delete() Class BaseModel
 
-	lRet := self:getDao():excluir(self:get('R_E_C_N_O_'))
+	lRet := self:getDao():delete(self:get('R_E_C_N_O_'))
 
 Return(lRet)
 
