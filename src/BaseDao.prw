@@ -34,33 +34,33 @@ CLASS BaseDao
 
 ENDCLASS
 
-/*/
+/*
 	METHOD:		New
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	CONSTRUCTOR
 	Sintaxe:	Model():New() -> Self
-/*/
+*/
 METHOD New() CLASS BaseDao
 Return(Self)
 
-/*/
+/*
 	METHOD:		getAlias
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna o alias associado a este DAO
 	Sintaxe:	Model():getAlias() -> cAlias
-/*/
+*/
 METHOD getAlias() CLASS BaseDao
 Return("")
 
-/*/
+/*
 	METHOD:		getByRecno
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Busca um registro pelo recno
 	Sintaxe:	Model():getByRecno(_nRecno) -> oObjeto
-/*/
+*/
 METHOD getByRecno(_nRecno) CLASS BaseDao
 
 	local _cAlias	:= self:getAlias()
@@ -86,13 +86,13 @@ METHOD getByRecno(_nRecno) CLASS BaseDao
 	
 Return(_xReturn)
 
-/*/
+/*
 	METHOD:		salvar
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Salva o objeto no banco de dados
 	Sintaxe:	Model():salvar(oObjeto) -> nRecno
-/*/
+*/
 METHOD salvar(oObjeto) CLASS BaseDao
 	
 	local _cAlias	:= self:getAlias()
@@ -143,13 +143,13 @@ METHOD salvar(oObjeto) CLASS BaseDao
 
 Return(0)
 
-/*/
+/*
 	METHOD:		excluir
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Exclui um registro da tabela
 	Sintaxe:	Model():excluir(xRecno) -> Boolean
-/*/
+*/
 METHOD excluir(xRecno) CLASS BaseDao
 
 	local _cQuery	:= ""
@@ -163,13 +163,13 @@ METHOD excluir(xRecno) CLASS BaseDao
 
 Return(_nRows > 0)
 
-/*/
+/*
 	METHOD:		query
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Constroi e executa uma query utilizando os Parametros
 	Sintaxe:	Model():query() -> xRet
-/*/
+*/
 METHOD query(aParams, cType) CLASS BaseDao
 	
 	local aModels	:= {}
@@ -191,13 +191,13 @@ METHOD query(aParams, cType) CLASS BaseDao
 	
 Return(_xReturn)
 
-/*/
+/*
 	METHOD:		populate
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Popula os models de acordo com o tipo
 	Sintaxe:	Model():populate() -> xRet
-/*/
+*/
 METHOD populate(cType) CLASS BaseDao
 
 	local cClass	:= self:getAlias() + "():NEW()"
@@ -236,13 +236,13 @@ METHOD populate(cType) CLASS BaseDao
 		
 Return(_xReturn)
 
-/*/
+/*
 	METHOD:		executaQuery
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Executa query
 	Sintaxe:	Model():executaQuery() -> xRet
-/*/
+*/
 Method executaQuery(_cQuery, _cAlias, _lReturn) Class BaseDao
 
 	local _nRet := 0
