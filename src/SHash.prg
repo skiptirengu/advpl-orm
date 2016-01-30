@@ -26,13 +26,13 @@
 #include "msobject.ch"
 #include "shash.ch"
 
-/*/
+/*
 	CLASS:        SHASH
 	Autor:        Marinaldo de Jesus
 	Adaptado por: Arthur Helfstein Fragoso
 	Descricao:    Simple Hash, Associative Array
 	Sintaxe:      SHASH():New() -> Objeto do Tipo SHASH
-/*/
+*/
 CLASS SHASH
 
 	DATA aData
@@ -55,13 +55,13 @@ ENDCLASS
 User Function SHASH()
 Return( SHASH():New() )
 
-/*/
+/*
 	METHOD:		New
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	CONSTRUCTOR
 	Sintaxe:	SHASH():New() -> Self
-/*/
+*/
 METHOD New() CLASS SHASH
 
 	Self:aData			:= Array( 0 )
@@ -69,23 +69,23 @@ METHOD New() CLASS SHASH
 
 Return( Self )
 
-/*/
+/*
 	METHOD:		ClassName
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Retornar o Nome da Classe
 	Sintaxe:	SHASH():ClassName() -> cClassName
-/*/
+*/
 METHOD ClassName() CLASS SHASH
 Return( Self:cClassName )
 
-/*/
+/*
 	METHOD:		GetAt
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Obter a Posicao da Propriedade Passada por parametro e de acordo com a Secao
 	Sintaxe:	SHASH():GetAt( uPropertyKey ) -> nATProperty
-/*/
+*/
 METHOD GetAt( uPropertyKey ) CLASS SHASH
 
 	Local nATProperty	:= 0
@@ -98,26 +98,26 @@ METHOD GetAt( uPropertyKey ) CLASS SHASH
 
 Return( nATProperty )
 
-/*/
+/*
 	METHOD:		Size
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna o tamanho do array
 	Sintaxe:	SHASH():Size( ) -> nTam
-/*/
+*/
 METHOD Size() CLASS SHASH
 
 	nSize := len(self:aData)
 
 Return(nSize)
 
-/*/
+/*
 	METHOD:		GetKeys
 	Autor:		Thiago Oliveira
 	Data:		03/12/2015
 	Descricao:	Retorna um array com as chaves declaradas
 	Sintaxe:	Model():GetKeys() -> Array
-/*/
+*/
 METHOD GetKeys() CLASS SHASH
 
 	Local aKeys := {}
@@ -130,13 +130,13 @@ METHOD GetKeys() CLASS SHASH
 
 Return(aKeys)
 
-/*/
+/*
 	METHOD:		Get
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Obter o valor da Propriedade Passada por parametro e de acordo com a Secao
 	Sintaxe:	SHASH():Get( uPropertyKey , uDefaultValue ) -> uPropertyValue
-/*/
+*/
 METHOD Get( uPropertyKey , uDefaultValue ) CLASS SHASH
 
 	Local uPropertyValue	:= "@__PROPERTY_NOT_FOUND__@"
@@ -164,13 +164,13 @@ METHOD Get( uPropertyKey , uDefaultValue ) CLASS SHASH
 
 Return( uPropertyValue )
 
-/*/
+/*
 	METHOD:		AddNewProperty
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Adiciona ou Edita uma propriedade
 	Sintaxe:	SHASH():Set( uPropertyKey , uValue ) -> lSuccess
-/*/
+*/
 METHOD Set( uPropertyKey , uValue ) CLASS SHASH
 
 	Local lSuccess			:= .F.
@@ -195,13 +195,13 @@ METHOD Set( uPropertyKey , uValue ) CLASS SHASH
 
 Return( lSuccess )
 
-/*/
+/*
 	METHOD:		Remove
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Remover Determinada Propriedade
 	Sintaxe:	SHASH():Remove( uPropertyKey ) -> lSuccess
-/*/
+*/
 METHOD Remove( uPropertyKey ) CLASS SHASH
 
 	Local lSuccess		:= .F.
@@ -224,13 +224,13 @@ METHOD Remove( uPropertyKey ) CLASS SHASH
 
 Return( lSuccess )
 
-/*/
+/*
 	METHOD:		GetAll
 	Autor:		Marinaldo de Jesus
 	Data:		04/12/2011
 	Descricao:	Retornar todas as propriedades
 	Sintaxe:	SHASH():GetAll( ) -> aAllProperties
-/*/
+*/
 METHOD GetAll() CLASS SHASH
 Return( Self:aData )
 
