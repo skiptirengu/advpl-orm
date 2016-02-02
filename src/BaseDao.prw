@@ -216,7 +216,11 @@ METHOD populate(cType) CLASS BaseDao
 			_cNomeCampo	:= _aProp[# _aFields[nY] ]:getCampo()
 			
 			_xValor := "BASEDAO->(" + _cNomeCampo + ")"
-			_xVal	:= &_xValor			
+			_xVal	:= &_xValor	
+			
+			if (_aProp[# _aFields[nY] ]:getTipo() == "D")
+				_xVal := stod(_xVal)
+			endif
 			
 			oModel:set(_cNomeCampo, _xVal)
 			
