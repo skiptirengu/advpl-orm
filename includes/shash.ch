@@ -23,13 +23,13 @@
 
     #DEFINE _SHASH_CH
 
-	/*/
+	/*
         Arquivo:    SHASH.CH
 		Autor:		Marinaldo de Jesus
         Data:		04/12/2011
 		Descricao:	Arquivo de Cabecalho utilizado na Classe SHASH e derivadas
         Sintaxe:    #INCLUDE "SHASH.CH"    
-	/*/
+	*/
 
 	#DEFINE SPROPERTY_KEY		1
 	#DEFINE SPROPERTY_VALUE		2
