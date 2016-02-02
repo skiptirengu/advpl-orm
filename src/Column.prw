@@ -23,10 +23,10 @@ CLASS Column
 	
 	Data xDefault
 	DATA xValor
-	DATA cTipo		AS STRING
+	DATA cTipo	AS STRING
 	DATA nTamanho	AS INTEGER
-	DATA cNome		AS STRING
-	DATA cCampo		AS STRING
+	DATA cNome	AS STRING
+	DATA cCampo	AS STRING
 
 	METHOD New() CONSTRUCTOR
 	
@@ -50,10 +50,10 @@ ENDCLASS
 METHOD New() CLASS Column
 
 	self:xValor   	:= nil
-	self:cTipo		:= nil
+	self:cTipo	:= nil
 	self:nTamanho	:= nil
-	self:cNome		:= nil
-	self:cCampo		:= nil
+	self:cNome	:= nil
+	self:cCampo	:= nil
 	self:xDefault	:= nil
 
 Return(self)
