@@ -19,6 +19,7 @@
 #include 'totvs.ch'
 #include 'protheus.ch'
 #include 'aarray.ch'
+#include "topconn.ch"
 
 CLASS BaseDao
 
