@@ -32,6 +32,7 @@ CLASS BaseDao
 	METHOD getAlias()
 	METHOD populate()
 	METHOD executaQuery()
+	METHOD queryAddMemo()
 
 ENDCLASS
 
@@ -64,28 +65,30 @@ Return("")
 */
 METHOD getByRecno(_nRecno) CLASS BaseDao
 
-	local _cAlias	:= self:getAlias()
-	local _cClasse	:= _cAlias + "():NEW()"
-	local _oModel	:= &_cClasse
+	return self:query({{"R_E_C_N_O_"}, _nRecno}, "ONE")
+	
+Return
+
+/*
+	METHOD:		queryAddMemo
+	Autor:		Thiago Oliveira
+	Data:		03/12/2015
+	Descricao:	Adicionar campos memo a query
+	Sintaxe:	Model():queryAddMemo(_oModel) -> cQuery
+*/
+METHOD queryAddMemo(_oModel) CLASS BaseDao
+
+	local _cQuery	:= ""
 	local _aMemos	:= _oModel:getMemoFields()
-	
-	cQuery := " SELECT * "
-	
+
 	for nX := 1 to len(_aMemos)
 		
 		_cColName := _oModel:getColumn(_aMemos[nX]):getCampo()
-		cQuery += ", convert(varchar(2500), convert(varbinary(2500), " + _cColName + ")) AS " + _cColName
+		_cQuery += ", convert(varchar(2500), convert(varbinary(2500), " + _cColName + ")) AS " + _cColName
 	
 	next nX
 	
-	cQuery += " FROM   " + RetSQLName(_cAlias) + " "
-	cQuery += " WHERE  R_E_C_N_O_ = " + Alltrim(STR(_nRecno))
-	
-	self:executaQuery(cQuery, "BASEDAO")
-	
-	_xReturn := ::populate("ONE")
-	
-Return(_xReturn)
+Return(_cQuery)
 
 /*
 	METHOD:		salvar
@@ -178,7 +181,8 @@ METHOD query(aParams, cType) CLASS BaseDao
 	local _cClasse 	:= _cAlias + "():NEW()"
 	local _cQuery	:= ""
 	
-	_cQuery := " SELECT * FROM " + RetSqlName(_cAlias) + " WHERE D_E_L_E_T_ = '' "
+	_cQuery := " SELECT * " + self:queryAddMemo(&_cClasse) 
+	_cQuery += " FROM " + RetSqlName(_cAlias) + " WHERE D_E_L_E_T_ = '' "
 	
 	for nX := 1 to len(aParams)
 	
