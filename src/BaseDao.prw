@@ -65,7 +65,7 @@ Return("")
 */
 METHOD getByRecno(_nRecno) CLASS BaseDao
 
-	return self:query({{"R_E_C_N_O_"}, _nRecno}, "ONE")
+	return self:query({{"R_E_C_N_O_", _nRecno}}, "ONE")
 	
 Return
 

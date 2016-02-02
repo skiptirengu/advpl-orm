@@ -20,25 +20,22 @@ User Function TestOrm()
 	Y01:SET("Y01_MEMO"	,	"THIS IS A MEMO")
 	Y01:SET("Y01_DATA"	,	STOD("19960525"))
 	
-	nRecno := Y01:SAVE()
-	IF(nRecno == 0)
+	IF(Y01:SAVE() <= 0)
 		FAIL(PROCLINE())
 	ELSE
-		Y01 := Y01Dao:query({{"Y01_NUMERO", 1}}, "ONE")
+		rec	:= Y01:get("R_E_C_N_O_")
+		Y01	:= nil
+		Y01	:= Y01Dao:getByRecno(rec)
 		assertType(Y01:get("Y01_DATA")	, "D")
 		assertType(Y01:get("Y01_STRING"), "C")
 		assertType(Y01:get("Y01_MEMO")	, "C")
 		assertType(Y01:get("Y01_NUMERO"), "N")
 	ENDIF
 	
-	IF(Y01Dao:findByRecno(nRecno) == nil)
-		FAIL(PROCLINE())
-	ENDIF
-
 	IF (errCount == 0)
-		ALERT("ALL TESTS PASSED!")
+		MSGINFO("ALL TESTS PASSED!")
 	ELSE
-		ALERT(ALLTRIM(STR(errCount)) + " TESTS FAILED")
+		MSGINFO(ALLTRIM(STR(errCount)) + " TESTS FAILED")
 	ENDIF
 	
 Return
@@ -46,7 +43,7 @@ Return
 STATIC FUNCTION fail(nLine)
 
 	errCount++
-	ALERT("TEST FAIL LINE: " + ALLTRIM(STR(nLine)))
+	MSGINFO("TEST FAIL LINE: " + ALLTRIM(STR(nLine)))
 
 RETURN
 
@@ -54,7 +51,7 @@ STATIC FUNCTION assertType(XVAL, CTYPE)
 
 	if (valType(xVal) <> cType)
 		errCount++
-		ALERT("FAILED ASSERTING TYPE " + valType(xVal) + " IS EQUALS " + CTYPE)
+		MSGINFO("FAILED ASSERTING TYPE " + valType(xVal) + " IS EQUALS " + CTYPE)
 	endif
 
 RETURN
