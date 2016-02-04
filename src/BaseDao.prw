@@ -294,6 +294,9 @@ Static Function typeCast(uVal)
 		if (uVal == nil)
 			uVal := oObj:getDefault()
 		endif
+		if (valType(uVal) == "C" .and. len(uVal) > oObj:getTamanho())
+			uVal := substr(uVal, 1, oObj:getTamanho())
+		endif
 	endif
 	
 	cValType := valtype(uVal)
