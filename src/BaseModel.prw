@@ -18,7 +18,7 @@
 
 #include 'totvs.ch'
 #include 'protheus.ch'
-#Include 'aarray.ch'
+#include 'aarray.ch'
 
 Class BaseModel
 
