@@ -4,7 +4,8 @@ Biblioteca ORM (Object Relational Mapping) desenvolvida inteiramente em ADVPL!
 
 Instalação
 ----------
-Para utilização da biblioteca, basta copiar os arquivos de `src/` e `include/` para pasta do seu projeto.
+Para utilização da biblioteca, basta copiar os arquivos de `src/` e `include/` para pasta do seu projeto. 
+Note que esta biblioteca foi testada apenas com o banco de dados Microsoft SQL Server.
 
 Utilização
 ----------
