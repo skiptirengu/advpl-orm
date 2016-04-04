@@ -8,7 +8,7 @@ Para utilização da biblioteca, basta copiar os arquivos de `src/` e `include/`
 
 Utilização
 ----------
-Para cada tabela existente no seu projeto, basta criar as classes DAO e Model extendendo as classes base e sobrescrever o método `getAlias()` para retornar corretamente o alias da tabela. Ex:
+Para cada tabela existente no banco, basta criar as classes DAO e Model extendendo as classes base e sobrescrever o método `getAlias()` para retornar corretamente o alias da tabela. Ex:
 
 ```xBase
 //SA2.prw
