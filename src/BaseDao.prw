@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------*\
  * advpl-orm - A Simple ORM (Object Relational Mapping) for AdvPL
- * Copyright (C) 2015 Thiago Oliveira
+ * Copyright (C) 2016 Thiago Oliveira <thiago.oliveira.gt14@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include 'totvs.ch'
 #include 'protheus.ch'
 #include 'aarray.ch'
-#include "topconn.ch"
+#include 'topconn.ch'
 
 CLASS BaseDao
 
