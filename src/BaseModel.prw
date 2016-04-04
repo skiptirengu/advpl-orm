@@ -17,8 +17,8 @@
 \*----------------------------------------------------------------------*/
 
 #include 'totvs.ch'
-#include "protheus.ch"
-#Include "aarray.ch"
+#include 'protheus.ch'
+#Include 'aarray.ch'
 
 Class BaseModel
 
@@ -39,6 +39,7 @@ Class BaseModel
 	METHOD getDao()
 	METHOD isLoaded()
 	METHOD populateProperties()
+	METHOD getAttributes()
 	
 	METHOD query(aParams, cType)
 	METHOD salvar()
@@ -85,6 +86,26 @@ METHOD getProperties() Class BaseModel
 	self:populateProperties()
 
 Return(Self:properties)
+
+/*
+	METHOD:		getAttributes
+	Autor:		Thiago Oliveira
+	Data:		04/04/2016
+	Descricao:	Retorna um array associativo com os atributos do model
+	Sintaxe:	BaseModel():getAttributes() -> SHASH
+*/
+METHOD getAttributes() Class BaseModel
+
+	local property	:= array(#)
+	local fields	:= self:getFields()
+	
+	for nX := 1 to len(fields)
+	
+		property[# fields[nX] ] := self:get(fields[nX])
+		
+	next nX
+	
+Return(property)
 
 /*
 	METHOD:		getDao
