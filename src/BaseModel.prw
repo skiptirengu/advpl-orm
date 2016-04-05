@@ -29,6 +29,7 @@ Class BaseModel
 
 	METHOD New() CONSTRUCTOR
 	
+	METHOD className()
 	METHOD get(cVar)
 	METHOD set(cVar, xVal)
 	METHOD getColumn(cVar)
@@ -62,6 +63,16 @@ ENDCLASS
 */
 METHOD New() Class BaseModel
 Return(Self)
+
+/*
+	METHOD:		className
+	Autor:		Thiago Oliveira
+	Data:		05/04/2016
+	Descricao:	Retorna o nome da classe
+	Sintaxe:	BaseModel():className() -> cClassName
+*/
+METHOD className() Class BaseModel
+Return("BASEMODEL")
 
 /*
 	METHOD:		getAlias
