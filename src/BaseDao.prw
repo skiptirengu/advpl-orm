@@ -187,7 +187,12 @@ METHOD query(aParams, cType) CLASS BaseDao
 	
 	for nX := 1 to len(aParams)
 	
-		_cQuery += " AND " + aParams[nX][1] + " = " + typeCast(aParams[nX][2]) + " "
+		//Tratar como IN
+		if (valtype(aParams[nX][2]) == "A")
+			_cQuery += " AND " + aParams[nX][1] + " IN " + self:parseInQry(aParams[nX][2]) + " "
+		else
+			_cQuery += " AND " + aParams[nX][1] + " = " + typeCast(aParams[nX][2]) + " "
+		endif
 	
 	next nX
 	
