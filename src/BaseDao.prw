@@ -33,6 +33,7 @@ CLASS BaseDao
 	METHOD populate()
 	METHOD executaQuery()
 	METHOD queryAddMemo()
+	METHOD parseInQry(aParams)
 
 ENDCLASS
 
@@ -285,6 +286,38 @@ Method executaQuery(_cQuery, _cAlias, _lReturn) Class BaseDao
 
 Return(_nRet)
 
+/*
+	METHOD:		parseInQry
+	Autor:		Thiago Oliveira
+	Data:		03/12/2015
+	Descricao:	Builda a parte `IN` da query
+	Sintaxe:	Model():parseInQry(aParams) -> cParams
+*/
+Method parseInQry(aParams) Class BaseDao
+
+	local _cRet		:= '('	
+	local _nAt		:= 1
+	local _nLen		:= 0
+
+	Default aParams := {}
+	
+	_nLen := len(aParams)
+	
+	for _nAt := 1 to _nLen
+	
+		cVal := iif(valType(aParams[_nAt]) == 'C', aParams[_nAt], allTrim(str(aParams[_nAt])))
+		
+		if (_nAt == _nLen)
+			_cRet += "'" + cVal + "')"
+		else
+			_cRet += "'" + cVal + "',"
+		endif
+		
+	next _nAt
+
+	return _cRet
+
+return
 
 Static Function typeCast(uVal)
 
