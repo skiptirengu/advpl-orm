@@ -289,7 +289,7 @@ Return(_nRet)
 /*
 	METHOD:		parseInQry
 	Autor:		Thiago Oliveira
-	Data:		03/12/2015
+	Data:		12/04/2016
 	Descricao:	Builda a parte `IN` da query
 	Sintaxe:	Model():parseInQry(aParams) -> cParams
 */
