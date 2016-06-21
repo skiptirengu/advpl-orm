@@ -74,6 +74,6 @@ oModel  := SA2():new()
 oModel:query({{"A2_FILIAL", "01"}, {"A2_LOJA", "02"}, "ONE") 
 // Retorna uma array com todos os registros que possuem A2_FILIAL = 01 e A2_LOJA = 02
 oModel:query({{"A2_FILIAL", "01"}, {"A2_LOJA", "02"}, "MANY") 
-// Resultará na query SELECT * FROM SA2010 WHERE A2_FILIAL IN ("01", "02") WHERE D_E_L_E_T_ = ''
+// Resultará na query SELECT * FROM SA2010 WHERE A2_FILIAL IN ('01', '02') WHERE D_E_L_E_T_ = ''
 oModel:query({{"A2_FILIAL", {"01", "02"}}}, "MANY")
 ```
